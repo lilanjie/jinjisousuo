@@ -101,4 +101,15 @@ public class Bag {
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int result = 0;
+        result += currentValue;
+        result *= 31;
+        result += currentWeight;
+        result *= 31;
+        result += totalWeight;
+        return result;
+    }
 }
