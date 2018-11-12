@@ -5,11 +5,11 @@ import java.util.Set;
 
 public class Bag {
 
-    private int currentWeight;
+    private Integer currentWeight;
 
-    private int currentValue;
+    private Integer currentValue;
 
-    private int totalWeight;
+    private Integer totalWeight;
 
     private Set<Good> goods = new HashSet<>();
 
@@ -17,6 +17,13 @@ public class Bag {
         this.totalWeight = totalWeight;
         this.currentValue= 0 ;
         this.currentWeight = 0;
+    }
+
+    public Bag(Bag bag){
+        this.totalWeight = bag.getTotalWeight();
+        this.currentValue= bag.getCurrentValue() ;
+        this.currentWeight = bag.getCurrentWeight();
+        this.goods.addAll(bag.goods);
     }
 
     public boolean canAdd(Good good){
@@ -37,6 +44,14 @@ public class Bag {
         goods.remove(good);
         currentValue -= good.getValue();
         currentWeight -= good.getWeight();
+    }
+
+    public Set<Good> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Set<Good> goods) {
+        this.goods = goods;
     }
 
     public int getCurrentWeight() {
@@ -61,5 +76,29 @@ public class Bag {
 
     public void setTotalWeight(int totalWeight) {
         this.totalWeight = totalWeight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o){
+            return true;
+        }
+        if (!(o instanceof Bag)){
+            return false;
+        }
+        Bag bag = (Bag) o;
+        if(!currentWeight.equals(bag.getCurrentValue()) && currentValue.equals(bag.getCurrentValue())
+                && totalWeight.equals(bag.totalWeight)){
+            return false;
+        }
+        if (goods.size() != bag.goods.size()){
+            return false;
+        }
+        for (Good good : goods) {
+            if (!bag.goods.contains(good)){
+                return false;
+            }
+        }
+        return true;
     }
 }

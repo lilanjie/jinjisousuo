@@ -28,6 +28,9 @@ public class Good {
 
     @Override
     public boolean equals(Object o) {
+        if(this == o){
+            return true;
+        }
         if (!(o instanceof Good)){
             return false;
         }
