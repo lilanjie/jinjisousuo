@@ -1,8 +1,8 @@
-package com.jinjisousuo;
+package com.jinjisousuo.model;
 //*建一个类，物品
 
-public class Goods {
-    public Goods(Integer weight,Integer value){
+public class Good {
+    public Good(Integer weight, Integer value){
         this.weight = weight;
         this.value = value;
     }
@@ -23,5 +23,20 @@ public class Goods {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Good)){
+            return false;
+        }
+        Good good = (Good) o;
+        return weight.equals(good.getWeight()) && value.equals(good.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return weight*255+value;
     }
 }
