@@ -30,7 +30,7 @@ public class RandomBagImprover implements BagImprover {
         bags.sort(new Comparator<Bag>() {
             @Override
             public int compare(Bag o1, Bag o2) {
-                return Integer.compare(o1.getCurrentValue(),o2.getCurrentValue());
+                return Integer.compare(o2.getCurrentValue(),o1.getCurrentValue());
             }
         });
         return bags;
