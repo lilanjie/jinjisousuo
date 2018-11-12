@@ -40,9 +40,11 @@ public class TabuSearch {
                 }
                 queue.addLast(improveBag);
                 if (bestBag.getCurrentValue() < improveBag.getCurrentValue()){
-                    bestBag = improveBag; }
+                    bestBag = improveBag;
+                }
                 if (queue.size() > queueSize) {
-                    queue.removeFirst(); }
+                    queue.removeFirst();
+                }
                 break;
             }
         }
